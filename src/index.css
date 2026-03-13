@@ -1,3 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* 전주 전용 컬러: 한옥 기와의 짙은 색과 대나무의 녹색 */
+  --color-brand-jeonju: #2D5A27; /* 짙은 쑥색/대나무색 */
+  --color-hanok-gray: #4A4A4A;   /* 기와색 */
+  --color-paper-beige: #F9F7F2;  /* 한지 느낌의 배경색 */
+}
+
+:root {
+  background-color: var(--color-paper-beige);
+}

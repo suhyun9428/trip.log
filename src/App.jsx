@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 const AppContent = () => {
   const location = useLocation();
-  const showNav = location.pathname !== '/activity-details';
+  const showNav = location.pathname !== ('/activity-details' || '/live');
   return (
     <div className="h-screen w-screen overflow-hidden flex flex-col bg-white">
       <main className="flex-1 overflow-hidden">

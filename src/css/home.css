@@ -1,0 +1,234 @@
+.box__home-wrap {
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  .box__header {
+    margin-bottom: 0;
+    padding: 40px 0 24px;
+    .text__subtitle {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-gray-400);
+      line-height: 1.25;
+    }
+    .text__title {
+      margin-top: 4px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-gray-900);
+    }
+    .box__trip-info {
+      display: flex;
+      align-items: center;
+      margin: 16px 0 0;
+      padding: 12px;
+      border: 1px solid var(--color-gray-100);
+      border-radius: 16px;
+      background-color: var(--color-white);
+      box-shadow:
+        0 1px 3px 0 rgb(0 0 0 / 0.1),
+        0 1px 2px -1px rgb(0 0 0 / 0.1);
+      .image__search {
+        margin-right: 8px;
+        color: var(--color-gray-400);
+      }
+      .form__input {
+        width: 100%;
+        outline-style: none;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+  .box__upcoming-info {
+    margin-bottom: 0;
+    .box__inner {
+      position: relative;
+      padding: 28px;
+      border-radius: 30px;
+      background: linear-gradient(to right bottom, #005eb8, #003a70);
+      overflow: hidden;
+      color: var(--color-white);
+      box-shadow: 0 25px 50px -12px oklch(88.2% 0.059 254.128);
+      &::before {
+        content: '🎡';
+        position: absolute;
+        opacity: 0.5;
+        right: -10px;
+        bottom: -10px;
+        font-size: 8rem;
+        line-height: 1;
+      }
+      .box__title {
+        .text__subtitle {
+          opacity: 0.8;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 16px;
+          letter-spacing: 1.2px;
+        }
+        .text__title {
+          margin-top: 4px;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 32px;
+        }
+      }
+      .box__date {
+        margin-top: 8px;
+        .text__dday {
+          font-size: 30px;
+          font-weight: 900;
+          line-height: 36px;
+        }
+        .text__period {
+          margin-top: 4px;
+          font-size: 11px;
+          font-weight: 500;
+          opacity: 0.7;
+        }
+      }
+      .box__members {
+        display: flex;
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        z-index: 10;
+        .box__image {
+          width: 28px;
+          height: 28px;
+          border: 2px solid var(--color-brand-osaka);
+          border-radius: 50%;
+          background: var(--color-gray-200);
+          overflow: hidden;
+          margin-left: -12px;
+        }
+        .button__more {
+          width: 28px;
+          height: 28px;
+          border: 2px solid var(--color-brand-osaka);
+          border-radius: 50%;
+          background: var(--color-usj-yellow);
+          overflow: hidden;
+          font-size: 11px;
+          font-weight: bold;
+          color: var(--color-brand-osaka);
+          margin-left: -12px;
+        }
+      }
+      .box__plane {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        box-sizing: border-box;
+        backdrop-filter: blur(12px);
+        border-radius: 50%;
+        background-color: oklab(0.999994 0.0000455678 0.0000200868 / 0.2);
+      }
+    }
+  }
+  .box__recommend {
+    padding: 32px 0;
+    .box__inner {
+      .box__title-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        .text__title {
+          font-size: 18px;
+          font-weight: bold;
+          color: var(--color-gray-800);
+          line-height: 28px;
+        }
+        .text__subtitle {
+          margin-top: 2px;
+          font-size: 11px;
+          color: var(--color-gray-400);
+          line-height: 15px;
+        }
+        .button__all {
+          font-size: 11px;
+          font-weight: 700;
+          color: var(--color-brand-osaka);
+          line-height: 16px;
+        }
+      }
+      .box__content {
+        .link__content {
+          display: block;
+          overflow: hidden;
+          border-radius: 32px;
+          border: 1px solid #ebf4ff;
+          box-shadow:
+            0 10px 15px -3px rgb(0 0 0 / 0.1),
+            0 4px 6px -4px rgb(0 0 0 / 0.1);
+          .box__image {
+            position: relative;
+            .image {
+              width: 100%;
+              height: 176px;
+              object-fit: cover;
+            }
+            .text__tag {
+              position: absolute;
+              top: 16px;
+              left: 16px;
+              padding: 4px 12px;
+              border-radius: 13px;
+              background-color: var(--color-brand-osaka);
+              font-size: 10px;
+              font-weight: bold;
+              color: var(--color-white);
+            }
+          }
+          .box__info {
+            position: relative;
+            padding: 20px;
+            .text {
+              font-size: 11px;
+              font-weight: bold;
+              color: var(--color-brand-osaka);
+              text-transform: uppercase;
+              vertical-align: top;
+            }
+            .text__title {
+              margin-top: 2px;
+              font-size: 18px;
+              font-weight: bold;
+              color: var(--color-gray-800);
+            }
+            .text__description {
+              margin-right: 1px;
+              font-size: 11px;
+              color: var(--color-gray-400);
+            }
+            .box__stars {
+              position: absolute;
+              top: 20px;
+              right: 20px;
+              font-size: 11px;
+              color: var(--color-orange-400);
+              .image {
+                display: inline-block;
+                vertical-align: top;
+              }
+              .text {
+                display: inline-block;
+                margin-left: 2px;
+                vertical-align: top;
+                font-size: 11px;
+                color: var(--color-orange-400);
+                line-height: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

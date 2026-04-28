@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./css/home.css";
 
 @theme {
   --color-brand-osaka: #005EB8; /* 신뢰감 있는 블루 (오사카 시티) */

@@ -1,4 +1,4 @@
-import { Search, Star, ChevronRight, Plane } from 'lucide-react';
+import { Search, Star, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -8,195 +8,87 @@ export default function Home() {
   var dDay = Math.ceil(diffDate / (1000 * 60 * 60 * 24));
 
   return (
-    <div className="p-5 space-y-6 h-full overflow-y-auto">
-      {/* 환영 메시지 & 검색 */}
-      <header className="pt-10 pb-6">
-        <p className="text-gray-400 text-sm font-medium">
-          환영합니다, 여행자님! 👋
-        </p>
-        <h2 className="text-xl font-black text-gray-900 mt-1 leading-tight">
+    <div className="box__home-wrap p-5 space-y-6 h-full overflow-y-auto">
+      <header className="box__header">
+        <p className="text__subtitle">환영합니다, 여행자님! 👋</p>
+        <h2 className="text__title">
           오사카의 여름을
           <br />
           <span className="text-brand-osaka">마음껏 즐길 시간!</span>
         </h2>
-        <div className="mt-4 flex items-center bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
-          <Search className="text-gray-400 mr-2" size={20} />
+        <div className="box__trip-info">
+          <Search className="image__search" size={20} />
           <input
             type="text"
             placeholder="어디로 떠나볼까요?"
-            className="outline-none text-sm w-full"
+            className="form__input"
           />
         </div>
       </header>
-
-      {/* 다가오는 여행 카드 */}
-      {/* <section className="bg-brand-jeonju p-6 rounded-[2rem] text-white shadow-lg relative overflow-hidden mb-0">
-        <div className="absolute right-[-10px] top-[-10px] opacity-10 text-8xl">
-          🏯
-        </div>
-        <p className="text-sm opacity-90 font-light">가장 한국적인 도시</p>
-        <h3 className="text-2xl font-bold mt-1">전주 한옥마을 🇰🇷</h3>
-        <p className="mt-4 text-xs font-medium bg-white/20 inline-block px-3 py-1 rounded-full backdrop-blur-sm">
-          D-{dDay} | 06.24 - 06.27
-        </p>
-      </section> */}
-      <section className="mb-0">
-        <div className="bg-gradient-to-br from-brand-osaka to-[#003A70] p-7 rounded-[2.5rem] text-white shadow-2xl shadow-blue-200 relative overflow-hidden">
-          {/* 배경 장식 (선택) */}
-          <div className="absolute right-[-10px] bottom-[-10px] opacity-10 text-9xl">
-            🎡
+      <section className="box__upcoming-info">
+        <div className="box__inner">
+          <div className="box__title">
+            <p className="text__subtitle">Upcoming Trip</p>
+            <h3 className="text__title">오사카, 일본 🇯🇵</h3>
           </div>
-
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest opacity-80">
-                Upcoming Trip
-              </p>
-              <h3 className="text-2xl font-bold mt-1">오사카, 일본 🇯🇵</h3>
-            </div>
-            <div className="bg-white/20 p-2 rounded-full backdrop-blur-md">
-              <Plane size={20} className="rotate-45" />
-            </div>
+          <div className="box__date">
+            <p className="text__dday">D-{`${dDay}`}</p>
+            <p className="text__period">2026.06.24 - 06.26</p>
           </div>
-
-          <div className="mt-8 flex justify-between items-end">
-            <div>
-              <p className="text-3xl font-black">D-{`${dDay}`}</p>
-              <p className="text-[11px] opacity-70 mt-1 font-medium">
-                2026.06.24 - 06.26
-              </p>
-            </div>
-            <div className="flex -space-x-3">
-              {/* 함께 가는 인원 프로필 (더미) */}
-              {[1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full border-2 border-brand-osaka bg-gray-200 overflow-hidden"
-                >
-                  <img
-                    src={`https://i.pravatar.cc/100?img=${i + 10}`}
-                    alt="user"
-                  />
-                </div>
-              ))}
-              <div className="w-8 h-8 rounded-full border-2 border-brand-osaka bg-usj-yellow flex items-center justify-center text-[10px] text-brand-osaka font-bold">
-                +2
+          <div className="box__members">
+            {[1, 2].map((i) => (
+              <div key={i} className="box__image">
+                <img
+                  src={`https://i.pravatar.cc/100?img=${i + 10}`}
+                  alt="user"
+                />
               </div>
-            </div>
+            ))}
+            <button className="button__more" type="button">
+              +2
+            </button>
+          </div>
+          <div className="box__plane">
+            <Plane size={20} className="image" />
           </div>
         </div>
       </section>
-
-      {/* 오늘의 할 일 */}
-      <section className="py-8">
-        <div className="flex justify-between items-end mb-5">
-          <div>
-            <h4 className="font-bold text-lg text-gray-800">
-              오늘의 추천 오사카
-            </h4>
-            <p className="text-xs text-gray-400 mt-0.5">
-              오사카 현지인들도 사랑하는 장소들
-            </p>
+      <section className="box__recommend">
+        <div className="box__inner">
+          <div className="box__title-wrap">
+            <div className="box__title">
+              <h4 className="text__title">오늘의 추천 오사카</h4>
+              <p className="text__subtitle">
+                오사카 현지인들도 사랑하는 장소들
+              </p>
+            </div>
+            <button type="button" className="button__all">
+              전체보기
+            </button>
           </div>
-          <button className="text-xs text-brand-osaka font-bold">
-            전체보기
-          </button>
-        </div>
-
-        <div className="space-y-5">
-          {/* 추천 1: 막걸리 골목 */}
-          {/* <Link
-            to="/activity-details"
-            className="block bg-white rounded-[2rem] overflow-hidden shadow-sm border border-gray-50 active:scale-[0.98] transition-transform"
-          >
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=800&auto=format&fit=crop"
-                className="h-44 w-full object-cover"
-                alt="Makgeolli"
-                onError={(e) =>
-                  (e.target.src =
-                    'https://placehold.co/600x400?text=Jeonju+Food')
-                }
-              />
-              <div className="absolute top-4 left-4 bg-black/30 backdrop-blur-md text-white text-[10px] px-3 py-1 rounded-full border border-white/20">
-                Must Visit
+          <div className="box__content">
+            <Link to="/activity-details" className="link__content">
+              <div className="box__image">
+                <img
+                  src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800"
+                  className="image"
+                  alt="USJ"
+                />
+                <span className="text__tag">Hot Place</span>
               </div>
-            </div>
-            <div className="p-5">
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] font-bold text-brand-osaka uppercase tracking-wider">
-                  Food & Night
-                </span>
-                <div className="flex items-center gap-0.5 text-orange-400 text-xs">
-                  <Star size={12} fill="currentColor" /> 4.8
+              <div className="box__info">
+                <span className="text">Theme Park</span>
+                <p className="text__title">유니버셜 스튜디오 재팬</p>
+                <p className="text__description">
+                  슈퍼 닌텐도 월드 & 해리 포터의 마법 세계
+                </p>
+                <div className="box__stars">
+                  <Star size={12} fill="currentColor" className="image" />
+                  <span className="text">4.9</span>
                 </div>
               </div>
-              <p className="font-bold mt-2 text-gray-800 text-lg">
-                삼천동 막걸리 골목 '한상차림'
-              </p>
-              <p className="text-[11px] text-gray-400 mt-1">
-                안주가 계속해서 나오는 전주만의 독특한 술문화
-              </p>
-            </div>
-          </Link> */}
-
-          {/* 추천 2: 전동성당 산책 */}
-          {/* <div className="block bg-white rounded-[2rem] overflow-hidden shadow-sm border border-gray-50 p-4 flex gap-4 items-center">
-            <img
-              src="https://images.pexels.com/photos/10105051/pexels-photo-10105051.jpeg?auto=compress&cs=tinysrgb&w=300"
-              className="w-20 h-20 rounded-2xl object-cover shrink-0"
-              alt="Church"
-              onError={(e) =>
-                (e.target.src = 'https://placehold.co/200x200?text=Jeonju')
-              }
-            />
-            <div className="flex-1">
-              <span className="text-[9px] font-bold text-gray-400 uppercase">
-                Culture
-              </span>
-              <p className="font-bold text-gray-800 text-sm mt-0.5">
-                전동성당 & 경기전 산책
-              </p>
-              <p className="text-[10px] text-gray-400 mt-1 italic">
-                도보 5분 거리의 역사적인 명소
-              </p>
-            </div>
-            <div className="bg-gray-50 p-2 rounded-full">
-              <ChevronRight size={16} className="text-gray-300" />
-            </div>
-          </div> */}
-          <Link
-            to="/activity-details"
-            className="block bg-white rounded-[2rem] overflow-hidden shadow-lg border border-sky-blue"
-          >
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800"
-                className="h-44 w-full object-cover"
-                alt="USJ"
-              />
-              <div className="absolute top-4 left-4 bg-brand-osaka text-white text-[10px] px-3 py-1 rounded-full font-bold">
-                Hot Place
-              </div>
-            </div>
-            <div className="p-5">
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] font-bold text-brand-osaka uppercase">
-                  Theme Park
-                </span>
-                <div className="flex items-center gap-0.5 text-orange-400 text-xs">
-                  <Star size={12} fill="currentColor" /> 4.9
-                </div>
-              </div>
-              <p className="font-bold mt-2 text-gray-800 text-lg">
-                유니버셜 스튜디오 재팬
-              </p>
-              <p className="text-[11px] text-gray-400 mt-1">
-                슈퍼 닌텐도 월드 & 해리 포터의 마법 세계
-              </p>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

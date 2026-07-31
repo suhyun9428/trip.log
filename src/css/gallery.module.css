@@ -1,0 +1,117 @@
+.gallery{
+    margin:180px auto;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title h2{
+    font-size:44px;
+}
+
+.title p{
+    margin-top:12px;
+    color:#86786f;
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(260px,1fr));
+
+gap:40px;
+
+}
+
+.card{
+
+position:relative;
+
+background:white;
+
+padding:18px 18px 40px;
+
+box-shadow:
+
+0 15px 35px rgba(0,0,0,.08);
+
+border-radius:8px;
+
+transition:.35s;
+
+}
+
+.card:nth-child(odd){
+
+transform:rotate(-4deg);
+
+}
+
+.card:nth-child(even){
+
+transform:rotate(4deg);
+
+}
+
+.card img{
+
+width:100%;
+
+aspect-ratio:1;
+
+object-fit:cover;
+
+border-radius:4px;
+
+}
+
+.card span{
+
+display:block;
+
+margin-top:20px;
+
+text-align:center;
+
+font-size:18px;
+
+font-family:
+
+"Cafe24 Ohsquare air";
+
+}
+
+.tape{
+
+position:absolute;
+
+top:-12px;
+
+left:50%;
+
+transform:translateX(-50%) rotate(-5deg);
+
+width:90px;
+
+height:28px;
+
+background:
+
+rgba(255,236,167,.7);
+
+backdrop-filter:blur(4px);
+
+}
+
+.card:hover{
+
+box-shadow:
+
+0 25px 55px rgba(0,0,0,.15);
+
+}

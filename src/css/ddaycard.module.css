@@ -1,0 +1,125 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 180px 0;
+}
+
+.card {
+  position: relative;
+
+  width: 420px;
+
+  padding: 50px;
+
+  border-radius: 32px;
+
+  overflow: hidden;
+
+  backdrop-filter: blur(18px);
+
+  background: rgba(255, 255, 255, 0.55);
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+}
+
+.blur {
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  background: #ffd7d7;
+
+  filter: blur(120px);
+
+  left: -80px;
+  top: -100px;
+}
+
+.heart {
+  position: relative;
+
+  margin-bottom: 25px;
+
+  animation: beat 1.3s infinite;
+}
+
+h3 {
+  position: relative;
+
+  font-size: 30px;
+
+  margin-bottom: 25px;
+}
+
+.dday {
+  position: relative;
+
+  font-size: 72px;
+
+  font-weight: 800;
+
+  color: #ff7d93;
+}
+
+.divider {
+  position: relative;
+
+  margin: 30px auto;
+
+  width: 80px;
+
+  height: 4px;
+
+  border-radius: 999px;
+
+  background: #ffd3dc;
+}
+
+.date {
+  position: relative;
+
+  font-size: 20px;
+
+  margin-bottom: 12px;
+}
+
+.text {
+  position: relative;
+
+  color: #85756d;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+
+    padding: 35px 24px;
+  }
+
+  .dday {
+    font-size: 52px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+}

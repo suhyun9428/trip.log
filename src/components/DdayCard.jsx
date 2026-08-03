@@ -31,21 +31,15 @@ export default function DdayCard() {
     <section className={styles.wrapper}>
       <div className={styles.card}>
         <div className={styles.blur}></div>
-
         <Heart className={styles.heart} size={42} fill="#ff8fa3" />
-
         <h3>GYEONGJU RUN TRIP</h3>
-
         <div className={styles.dday}>{getMessage()}</div>
-
         <div className={styles.divider}></div>
-
         <p className={styles.date}>
           {format(TRIP_DATE, 'yyyy.MM.dd (EEE)', {
             locale: ko,
           })}
         </p>
-
         <span className={styles.text}>우리 여행까지</span>
       </div>
     </section>

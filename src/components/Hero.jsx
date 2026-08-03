@@ -11,10 +11,8 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.cloud1}></div>
       <div className={styles.cloud2}></div>
-
       <div className={styles.star1}>✦</div>
       <div className={styles.star2}>✦</div>
-
       <motion.div
         className={styles.content}
         initial={{ opacity: 0, y: 40 }}
@@ -25,27 +23,21 @@ export default function Hero() {
         }}
       >
         <span className={styles.emoji}>🏃</span>
-
         <p className={styles.subtitle}>OUR LOVELY RUNNING TRIP</p>
-
         <h1>
           GYEONGJU
           <br />
           RUN TRIP
         </h1>
-
         <div className={styles.date}>
           2026.09.19
           <span>~</span>
           2026.09.20
         </div>
-
         <p className={styles.couple}>❤</p>
-
         <button onClick={scrollDown} className={styles.button}>
           Let's Run
         </button>
-
         <ChevronDown className={styles.arrow} size={30} />
       </motion.div>
     </section>

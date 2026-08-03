@@ -21,11 +21,11 @@
     margin-bottom: 20px;
     color: #ffae91;
   }
-  h3 {
+  & h3 {
     margin-bottom: 12px;
     font-size: 24px;
   }
-  p {
+  & p {
     color: #8b7b71;
   }
 }

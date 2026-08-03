@@ -28,9 +28,7 @@ export default function GoalCard() {
         return (
           <article className={styles.card} key={goal.title}>
             <Icon size={46} strokeWidth={1.8} />
-
             <h3>{goal.title}</h3>
-
             <p>{goal.text}</p>
           </article>
         );

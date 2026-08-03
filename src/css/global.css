@@ -1,34 +1,28 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-html{
-scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
-
-body{
-font-family:Pretendard,sans-serif;
-background:#fff8f2;
-color:#40342c;
-overflow-x:hidden;
+body {
+  overflow-x: hidden;
+  background: #fff8f2;
+  font-family: Pretendard, sans-serif;
+  color: #40342c;
 }
-
-.container{
-width:min(1200px,92%);
-margin:auto;
+.container {
+  width: min(1200px, 92%);
+  margin: auto;
 }
-
-button{
-font-family:inherit;
+button {
+  font-family: inherit;
 }
-
-img{
-display:block;
-max-width:100%;
+img {
+  display: block;
+  max-width: 100%;
 }
-
-a{
-color:inherit;
+a {
+  color: inherit;
 }

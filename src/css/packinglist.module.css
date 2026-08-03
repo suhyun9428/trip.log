@@ -1,83 +1,69 @@
 .wrapper {
   margin: 180px auto;
-}
-
-.title {
-  margin-bottom: 60px;
-  text-align: center;
-}
-
-.title h2 {
-  font-size: 42px;
-}
-
-.title p {
-  margin-top: 10px;
-  color: #8c8178;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  display: flex;
-
-  padding: 24px;
-  border: none;
-
-  border-radius: 24px;
-
-  background: white;
-
-  transition: 0.25s;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-}
-
-.card:hover {
-  transform: translateY(-6px);
-}
-
-.icon {
-  display: flex;
-  width: 34px;
-  height: 34px;
-
-  border-radius: 50%;
-
-  background: #f4f4f4;
-
-  transition: 0.25s;
-  justify-content: center;
-  align-items: center;
-}
-
-.checked {
-  background: #dff3dd;
-}
-
-.checked .icon {
-  background: #59c46f;
-  color: white;
-}
-
-.checked span {
-  opacity: 0.65;
-  text-decoration: line-through;
+  .title {
+    margin-bottom: 60px;
+    text-align: center;
+    & h2 {
+      font-size: 42px;
+    }
+    & p {
+      margin-top: 10px;
+      color: #8c8178;
+    }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    .card {
+      display: flex;
+      padding: 24px;
+      border: none;
+      border-radius: 24px;
+      background: white;
+      transition: 0.25s;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+      &:hover {
+        transform: translateY(-6px);
+      }
+      .icon {
+        display: flex;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #f4f4f4;
+        transition: 0.25s;
+        justify-content: center;
+        align-items: center;
+      }
+      & .checked {
+        background: #dff3dd;
+        .icon {
+          background: #59c46f;
+          color: white;
+        }
+        & span {
+          opacity: 0.65;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
-  .title h2 {
-    font-size: 32px;
-  }
+  .wrapper {
+    .title {
+      & h2 {
+        font-size: 32px;
+      }
+    }
 
-  .grid {
-    grid-template-columns: 1fr;
+    .grid {
+      grid-template-columns: 1fr;
+    }
   }
 }

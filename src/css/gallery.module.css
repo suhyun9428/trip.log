@@ -57,7 +57,6 @@
     }
   }
 }
-/* 기존 gallery 스타일 하단 또는 적절한 위치에 추가 */
 
 .uploadForm {
   max-width: 600px;
@@ -67,13 +66,10 @@
   background: #ffffff;
   border: 1px solid #ffefe8;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-
   .inputGroup {
     display: flex;
     gap: 10px;
     align-items: center;
-
-    /* 커스텀 파일 업로드 버튼 */
     .fileLabel {
       display: inline-flex;
       align-items: center;
@@ -87,16 +83,13 @@
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.25s ease;
-
       &:hover {
         background: #ffd7c5;
       }
     }
-
     .fileInput {
-      display: none; /* 실제 file input은 감춤 */
+      display: none;
     }
-
     .textInput {
       flex: 1;
       padding: 12px 16px;
@@ -107,18 +100,15 @@
       color: #40342c;
       outline: none;
       transition: all 0.25s ease;
-
       &::placeholder {
         color: #bfaea5;
       }
-
       &:focus {
         border-color: #ffbfa5;
         background: #ffffff;
         box-shadow: 0 0 0 3px rgba(255, 191, 165, 0.2);
       }
     }
-
     .addBtn {
       display: inline-flex;
       align-items: center;
@@ -134,7 +124,6 @@
       white-space: nowrap;
       transition: all 0.25s ease;
       box-shadow: 0 4px 12px rgba(255, 191, 165, 0.4);
-
       &:hover {
         background: #f0a385;
         transform: translateY(-2px);
@@ -142,7 +131,6 @@
     }
   }
 
-  /* 선택된 이미지 미리보기 Box */
   .previewContainer {
     display: flex;
     align-items: center;
@@ -150,25 +138,21 @@
     margin-top: 14px;
     padding-top: 12px;
     border-top: 1px stroke #f5eae3;
-
-    img {
+    & img {
       width: 50px;
       height: 50px;
       object-fit: cover;
       border-radius: 8px;
     }
-
-    span {
+    & span {
       font-size: 12px;
       color: #8a7b73;
     }
   }
 }
 
-/* 카드 내 삭제 버튼 위치 설정 */
 .card {
-  position: relative; /* 삭제 버튼 absolute 지정을 위해 사용 */
-
+  position: relative;
   .deleteBtn {
     position: absolute;
     top: 12px;
@@ -187,27 +171,23 @@
     opacity: 0;
     transition: all 0.2s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
     &:hover {
       background: #ffe5e5;
       color: #d32f2f;
       transform: scale(1.1);
     }
   }
-
   &:hover {
     .deleteBtn {
-      opacity: 1; /* 폴라로이드 카드 호버 시 삭제 버튼 표시 */
+      opacity: 1;
     }
   }
 }
 
-/* 모바일 반응형 */
 @media (max-width: 768px) {
   .uploadForm {
     .inputGroup {
       flex-direction: column;
-
       .fileLabel,
       .textInput,
       .addBtn {

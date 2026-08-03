@@ -15,6 +15,65 @@
       color: #8a7b73;
     }
   }
+  .formContainer {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr auto;
+    gap: 12px;
+    max-width: 820px;
+    margin: 0 auto 70px;
+    padding: 20px;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ffefe8;
+    align-items: center;
+    & input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #f3e5dd;
+      border-radius: 14px;
+      background: #fdfbf9;
+      font-size: 14px;
+      color: #40342c;
+      outline: none;
+      transition: all 0.25s ease;
+      &::placeholder {
+        color: #bfaea5;
+      }
+      &:focus {
+        border-color: #ffbfa5;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(255, 191, 165, 0.2);
+      }
+    }
+    .addBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 14px;
+      background: #ffbfa5;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(255, 191, 165, 0.4);
+      &:hover {
+        background: #f0a385;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(240, 163, 133, 0.5);
+      }
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
   .line {
     position: absolute;
     top: 340px;
@@ -64,21 +123,34 @@
           font-weight: 700;
           color: #b66d4c;
         }
+        .btnGroup {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+        }
+        .editBtn,
         .deleteBtn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 32px;
-          height: 32px;
+          width: 30px;
+          height: 30px;
           border: none;
           border-radius: 50%;
           background: #fff0ea;
-          color: #e57373;
           cursor: pointer;
-          opacity: 0.5;
           transition: all 0.2s ease;
+        }
+        .editBtn {
+          color: #b66d4c;
           &:hover {
-            opacity: 1;
+            background: #ffe5dc;
+            transform: scale(1.08);
+          }
+        }
+        .deleteBtn {
+          color: #e57373;
+          &:hover {
             background: #ffe5e5;
             color: #d32f2f;
             transform: scale(1.08);
@@ -115,67 +187,59 @@
         left: -11px;
       }
     }
-  }
-  .formContainer {
-    position: relative;
-    z-index: 10;
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 2fr auto;
-    gap: 12px;
-    max-width: 820px;
-    margin: 0 auto 70px;
-    padding: 20px;
-    border-radius: 24px;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid #ffefe8;
-    align-items: center;
-    & input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid #f3e5dd;
-      border-radius: 14px;
-      background: #fdfbf9;
-      font-size: 14px;
-      color: #40342c;
-      outline: none;
-      transition: all 0.25s ease;
-
-      &::placeholder {
-        color: #bfaea5;
+    .editFormBox {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .editRow {
+        display: flex;
+        gap: 8px;
       }
-
-      &:focus {
-        border-color: #ffbfa5;
-        background: #ffffff;
-        box-shadow: 0 0 0 3px rgba(255, 191, 165, 0.2);
+      & input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ffefe8;
+        border-radius: 10px;
+        background: #fdfbf9;
+        font-size: 14px;
+        color: #40342c;
+        outline: none;
+        &:focus {
+          border-color: #ffbfa5;
+          background: #ffffff;
+        }
       }
-    }
-    .addBtn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 12px 22px;
-      border: none;
-      border-radius: 14px;
-      background: #ffbfa5;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(255, 191, 165, 0.4);
-
-      &:hover {
-        background: #f0a385;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(240, 163, 133, 0.5);
-      }
-
-      &:active {
-        transform: translateY(0);
+      .editActions {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+        margin-top: 6px;
+        & button {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          padding: 6px 14px;
+          border: none;
+          border-radius: 8px;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .saveBtn {
+          background: #ffbfa5;
+          color: #ffffff;
+          &:hover {
+            background: #f0a385;
+          }
+        }
+        .cancelBtn {
+          background: #f3f4f6;
+          color: #6b7280;
+          &:hover {
+            background: #e5e7eb;
+          }
+        }
       }
     }
   }
@@ -193,6 +257,23 @@
       top: 460px;
       left: 18px;
     }
+    .formContainer {
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 50px;
+      padding: 16px;
+      gap: 10px;
+      & input {
+        &:nth-child(3),
+        &:nth-child(4) {
+          grid-column: span 2;
+        }
+      }
+      .addBtn {
+        grid-column: span 2;
+        width: 100%;
+        margin-top: 4px;
+      }
+    }
     .card {
       width: 100%;
       margin-left: 0;
@@ -207,13 +288,13 @@
           left: -11px;
         }
       }
-      .box{
+      .box {
         padding: 16px;
-        & h3{
+        & h3 {
           font-size: 20px;
           margin-bottom: 14px;
         }
-        & p{
+        & p {
           line-height: 1;
         }
         .time,
@@ -221,29 +302,11 @@
           margin: 5px 0;
           font-size: 14px;
           line-height: 1;
-          & svg{
+          & svg {
             width: 14px;
             height: 14px;
           }
         }
-      }
-    }
-    .formContainer {
-      grid-template-columns: 1fr 1fr;
-      margin-bottom: 50px;
-      padding: 16px;
-      gap: 10px;
-      & input {
-        &:nth-child(3),
-        &:nth-child(4) {
-          grid-column: span 2;
-        }
-      }
-
-      .addBtn {
-        grid-column: span 2;
-        width: 100%;
-        margin-top: 4px;
       }
     }
   }

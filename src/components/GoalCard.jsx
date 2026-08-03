@@ -4,8 +4,8 @@ import styles from '../css/goalcard.module.css';
 const goals = [
   {
     icon: Trophy,
-    title: '10K 완주',
-    text: '기록보다 완주',
+    title: '10K PB 달성',
+    text: 'PB 달성 화이팅!',
   },
   {
     icon: MoonStar,

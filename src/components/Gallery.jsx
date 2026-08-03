@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Trash2, ImagePlus } from 'lucide-react';
+import { supabase } from '../supabase';
 import styles from '../css/gallery.module.css';
 
 const DEFAULT_PHOTOS = [
@@ -12,45 +13,59 @@ const DEFAULT_PHOTOS = [
   { id: '6', image: '/images/selfie.jpg', title: '우리 ❤️' },
 ];
 
-const LOCAL_STORAGE_KEY = 'gyeongju_travel_gallery';
-
 export default function Gallery() {
   const [photos, setPhotos] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   const [newTitle, setNewTitle] = useState('');
+  const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
 
-  useEffect(() => {
-    const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedData) {
-      try {
-        setPhotos(JSON.parse(savedData));
-      } catch (e) {
-        console.error('Failed to parse gallery data:', e);
-        setPhotos(DEFAULT_PHOTOS);
+  const fetchPhotos = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('gallery')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      if (!data || data.length === 0) {
+        const defaultInsertData = DEFAULT_PHOTOS.map((item) => ({
+          title: item.title,
+          image: item.image,
+        }));
+
+        const { data: insertedData, error: insertError } = await supabase
+          .from('gallery')
+          .insert(defaultInsertData)
+          .select();
+
+        if (!insertError) {
+          setPhotos(insertedData || []);
+        } else {
+          setPhotos(DEFAULT_PHOTOS);
+        }
+      } else {
+        setPhotos(data);
       }
-    } else {
+    } catch (err) {
+      console.error('갤러리 로드 실패:', err);
       setPhotos(DEFAULT_PHOTOS);
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(DEFAULT_PHOTOS));
+    } finally {
+      setLoading(false);
     }
-    setIsLoaded(true);
-  }, []);
+  };
 
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(photos));
-    }
-  }, [photos, isLoaded]);
+    fetchPhotos();
+  }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (file.size > 2 * 1024 * 1024) {
-      alert('이미지 크기가 너무 큽니다! (2MB 이하의 이미지 권장)');
-      return;
-    }
+    setImageFile(file);
 
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -59,29 +74,59 @@ export default function Gallery() {
     reader.readAsDataURL(file);
   };
 
-  const handleAddPhoto = (e) => {
+  const handleAddPhoto = async (e) => {
     e.preventDefault();
-    if (!imagePreview) return alert('이미지를 업로드해주세요!');
-    if (!newTitle.trim()) return alert('제목을 입력해주세요!');
+    if (!imageFile) return alert('이미지를 선택해 주세요!');
+    if (!newTitle.trim()) return alert('제목을 입력해 주세요!');
 
-    const newPhoto = {
-      id: Date.now().toString(),
-      image: imagePreview,
-      title: newTitle.trim(),
-    };
+    try {
+      const fileExt = imageFile.name.split('.').pop();
 
-    setPhotos((prev) => [newPhoto, ...prev]);
+      const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 9)}.${fileExt}`;
 
-    setNewTitle('');
-    setImagePreview('');
-    e.target.reset();
+      const { error: uploadError } = await supabase.storage
+        .from('photos')
+        .upload(fileName, imageFile);
+
+      if (uploadError) throw uploadError;
+
+      const { data: urlData } = supabase.storage
+        .from('photos')
+        .getPublicUrl(fileName);
+
+      const { error: dbError } = await supabase.from('gallery').insert([
+        {
+          title: newTitle.trim(),
+          image: urlData.publicUrl,
+        },
+      ]);
+
+      if (dbError) throw dbError;
+
+      fetchPhotos();
+      setNewTitle('');
+      setImageFile(null);
+      setImagePreview('');
+      e.target.reset();
+    } catch (err) {
+      console.error('사진 업로드 실패:', err);
+      alert('사진 업로드 중 오류가 발생했습니다.');
+    }
   };
 
-  const handleDeletePhoto = (idToDelete) => {
-    setPhotos((prev) => prev.filter((item) => item.id !== idToDelete));
+  const handleDeletePhoto = async (id) => {
+    if (!confirm('이 사진을 삭제하시겠습니까?')) return;
+
+    try {
+      const { error } = await supabase.from('gallery').delete().eq('id', id);
+      if (error) throw error;
+      fetchPhotos();
+    } catch (err) {
+      console.error('삭제 실패:', err);
+    }
   };
 
-  if (!isLoaded) return null;
+  if (loading) return null;
 
   return (
     <section className={styles.gallery} id="gallery">
@@ -129,7 +174,7 @@ export default function Gallery() {
       <div className={styles.grid}>
         {photos.map((photo, index) => (
           <motion.article
-            key={photo.id || photo.title + index}
+            key={photo.id || index}
             className={styles.card}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

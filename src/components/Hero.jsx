@@ -25,14 +25,14 @@ export default function Hero() {
         <span className={styles.emoji}>🏃</span>
         <p className={styles.subtitle}>OUR LOVELY RUNNING TRIP</p>
         <h1>
-          GYEONGJU
+          DAEJEON
           <br />
           RUN TRIP
         </h1>
         <div className={styles.date}>
-          2026.09.19
+          2026.10.09
           <span>~</span>
-          2026.09.20
+          2026.10.10
         </div>
         <p className={styles.couple}>❤</p>
         <button onClick={scrollDown} className={styles.button}>

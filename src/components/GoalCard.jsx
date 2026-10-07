@@ -10,12 +10,12 @@ const goals = [
   {
     icon: MoonStar,
     title: '야간 산책',
-    text: '대릉원',
+    text: '엑스포다리',
   },
   {
     icon: UtensilsCrossed,
     title: '먹방',
-    text: '경주 맛집',
+    text: '대전 맛집',
   },
 ];
 

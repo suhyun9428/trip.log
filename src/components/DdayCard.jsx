@@ -4,7 +4,7 @@ import { ko } from 'date-fns/locale';
 import { Heart } from 'lucide-react';
 import styles from '../css/ddaycard.module.css';
 
-const TRIP_DATE = new Date('2026-09-19');
+const TRIP_DATE = new Date('2026-10-09');
 
 export default function DdayCard() {
   const [days, setDays] = useState(0);

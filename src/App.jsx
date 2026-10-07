@@ -20,7 +20,7 @@ function App() {
         <GoalCard />
         <TimeLine />
         <PackingList />
-        <Gallery />
+        {/* <Gallery /> */}
       </main>
     </>
   );

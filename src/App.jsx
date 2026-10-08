@@ -5,8 +5,7 @@ import TimeLine from './components/TimeLine';
 import DdayCard from './components/DdayCard';
 import PackingList from './components/PackingList';
 import Gallery from './components/Gallery';
-
-import './trip.css';
+import SelectSchedule from './components/SelectSchedule';
 
 function App() {
   return (
@@ -16,10 +15,11 @@ function App() {
       <Hero />
 
       <main className="container">
-        <DdayCard />
-        <GoalCard />
-        <TimeLine />
-        <PackingList />
+        <SelectSchedule />
+        {/* <DdayCard /> */}
+        {/* <GoalCard /> */}
+        {/* <TimeLine /> */}
+        {/* <PackingList /> */}
         {/* <Gallery /> */}
       </main>
     </>

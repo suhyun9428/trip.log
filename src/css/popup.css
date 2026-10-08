@@ -1,0 +1,137 @@
+.box__layer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  width: min(500px, calc(100% - 30px));
+  max-height: calc(100vh - 40px);
+  padding: 28px 24px 24px;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  border: 1px solid #f1dce3;
+  border-radius: 20px;
+  background: #fffafc;
+  box-shadow: 0 15px 40px rgba(80, 30, 50, 0.18);
+
+  .button__close {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #f8e8ed;
+    color: #9b536d;
+    cursor: pointer;
+
+    &:hover {
+      background: #f3d9e2;
+    }
+  }
+
+  .text__title {
+    width: max-content;
+    margin: 0 0 24px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #3f3035;
+  }
+
+  .box__place {
+    padding: 18px;
+    border: 1px solid #f0dfe5;
+    border-radius: 14px;
+    background: #fff;
+
+    & + .box__place {
+      margin-top: 12px;
+    }
+
+    > strong {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 16px;
+      color: #49353c;
+    }
+
+    select {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      border: 1px solid #e8cbd5;
+      border-radius: 9px;
+      outline: none;
+      background: #fff;
+      color: #5a4149;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:focus {
+        border-color: #e86f92;
+      }
+    }
+  }
+
+  .box__time {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 14px;
+
+    label {
+      cursor: pointer;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+
+        &:checked + span {
+          border-color: #e86f92;
+          background: #e86f92;
+          color: #fff;
+          font-weight: 600;
+        }
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 38px;
+        border: 1px solid #eadde1;
+        border-radius: 8px;
+        background: #fff;
+        color: #806b72;
+        font-size: 13px;
+        transition: 0.2s;
+
+        &:hover {
+          border-color: #e8a6ba;
+          background: #fff5f8;
+        }
+      }
+    }
+  }
+  & > .button__submit {
+    width: 100%;
+    height: 46px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 10px;
+    background: #e86f92;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+      background: #d95f82;
+    }
+  }
+}
